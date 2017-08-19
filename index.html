@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+	.wrap{
+		width: 200px;
+		margin: 50px auto;
+		border: 1px solid red;
+	}
+	.box1{
+	
+		height: 35px;
+		width: 95px;
+		padding: 10px 5px 0px;
+		border: 1px solid #999;
+		margin: 10px;
+	
+	}
+	.exam{/* 这个是用border实现的三道杠 */
+		display: inline-block;
+		background: #fff;
+		height: 5px;
+		width: 30px;
+		border-top: 15px double #999;
+		border-bottom: 5px solid #999;
+	}
+	.test{/* 这个是用padding实现的三道杠 */
+		display: inline-block;
+		width: 30px;
+		height: 5px;
+		border-top: 5px solid #999;
+		border-bottom: 5px solid #999;
+		background-color: #999;
+		background-clip: content-box;
+		padding: 5px 0;
+	}
+	.circle{
+		display: inline-block;
+		color: #999;
+		width: 17px;
+		height: 17px;
+		border-radius: 50%;
+		border: 2px solid;
+		padding: 2px;
+		background-color: #999;
+		background-clip: content-box;
+	}
+	.circle:hover{
+		color: #7f4fff;
+		background-color: #7f4fff;
+	}
+	.triangle{
+		float: left;
+		width: 0px;
+		margin: 10px;
+		/* border-color: transparent transparent transparent transparent; */
+	}
+	#triangle1{
+		border: 10px solid;
+		border-color: #999 transparent transparent transparent;
+	}
+	#triangle2{
+		position: relative;
+		left: -37px;
+		border: 7px solid;
+		border-color: #fff transparent transparent transparent;
+	}
+	.box2 {
+		border: 2px solid #999;
+		width: 130px;
+		padding: 10px;
+		margin: 10px;
+		margin-bottom: 20px;
+
+	}
+	.small-t{
+		position: relative;
+		left: 86px;
+		float: left;
+	}
+	.trapezoid{
+		width: 130px;
+		border: 10px solid;
+		border-color: #999 transparent transparent transparent;
+	}
+	.box3{
+		margin: 10px;
+	}
+	.checkbox{
+		display: inline-block;
+		height: 16px;
+		width: 16px;
+		border: 2px solid #fff;
+		box-shadow: inset 0 1px, inset 1px 0, inset -1px 0, inset 0 -1px;
+		cursor: pointer;
+		vertical-align: middle;
+		color: #d0d0d5;
+		background: #fff;
+	}
+	.box4{
+		display: inline-block;
+		/* width: 70px; */
+		margin: 0px 10px 10px 10px;
+		cursor: pointer;
+		/* border: 1px solid red; */
+	}
+	.box4 span{
+		font-size: 12px;
+		vertical-align: middle;
+	}
+	.white-right{
+		display: none;
+		position: relative;
+		left: -4px;
+		top: 18px;
+		/* cursor: pointer; */
+	}
+	.small-t1{
+		position: relative;
+		left: 1px;
+		top: -20px;
+		width: 0px;
+		border: 7px solid;
+		border-color: #fff transparent transparent transparent;	
+		transform: rotate(115deg);
+	}
+	.small-t2{
+		position: relative;
+		left: 4px;
+		top: -33px;
+		width: 0px;
+		border: 5px solid;
+		border-color: #3299f2 transparent transparent transparent;
+		transform: rotate(115deg);
+	}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+	<div class="box1"><!-- 实现三道杠 -->
+		<div class="exam" id="exam"></div>
+		<div class="test"></div>
+		<div class="circle" id="circle"></div>
+	</div>
+	<div class="box2">
+		<span>也是两个三角叠加</span>
+		<div class="small-t">
+			<div class="triangle" id="triangle1"></div>
+			<div class="triangle" id="triangle2"></div>
+			
+		</div>
+	</div>
+	<div class="box3">
+		<div class="trapezoid"></div>
+	</div>
+	<div class="box4" id="box4">
+		<div class="checkbox" id="checkbox">
+			<div class="white-right" id="white-right">
+				<div class="small-t1"></div>
+				<div class="small-t2"></div>
+			</div>
+		</div>
+		<span>复选框</span>
+	</div>
+</div>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	var box4 = $('#box4'),
+		cc = $('#checkbox'),
+		w = $('#white-right'),
+		key = false;
+	box4.on('mouseover',function () {
+		cc.css({
+			color: '#3299f2',
+			background: '#3299f2'
+		})
+		w.css({
+			display:'inline-block',
+		})
+	})
+	.on('click', function() {
+		if(key){
+			key = false;
+		}
+		else{
+			key = true;
+		}
+	})
+	.on('mouseout', function () {
+		if(key){
+			return;
+		}
+		cc.css({
+			color: '#d0d0d5',
+			background: '#fff'
+		})
+		w.css({
+			display: 'none',
+		})
+	})
+
+{
+	var circle = document.querySelector('#circle');
+	
+	circle.onclick = function () {
+		circle.style.color = '#7f4fff';
+		circle.style.backgroundColor = '#7f4fff';
+	}
+}
+</script>
+</body>
+</html>
